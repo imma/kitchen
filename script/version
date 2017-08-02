@@ -4,7 +4,7 @@ function version {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local ver_kitchen="0.0.1"
+  local ver_kitchen="$(kitchen version 2>/dev/null | awk '{print $4}' || true)"
   jq -n --arg kitchen "$ver_kitchen" '{kitchen: $kitchen}'
 }
 

@@ -6,7 +6,7 @@ function _kitchen_profile {
   #export ANSIBLE_ROLES_PATH="$shome/roles${ANSIBLE_ROLES_PATH:+:${ANSIBLE_ROLES_PATH}}"
   #export ANSIBLE_LIBRARY="$shome/library${ANSIBLE_LIBRARY:+:${ANSIBLE_LIBRARY}}"
 
-  KITCHEN_VERSION='0.0.1'
+  KITCHEN_VERSION='1.16.0'
 }
 
 _kitchen_profile
