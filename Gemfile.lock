@@ -101,7 +101,7 @@ GEM
     htmlentities (4.3.4)
     httpclient (2.8.3)
     iniparse (1.4.4)
-    inspec (1.31.1)
+    inspec (1.32.1)
       addressable (~> 2.4)
       faraday (>= 0.9.0)
       hashie (~> 3.4)
@@ -308,7 +308,7 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf (= 6.2.1)
-  inspec (= 1.31.1)
+  inspec (= 1.32.1)
   kitchen-ansible (= 0.47.3)
   kitchen-inspec (= 0.19.0)
   kitchen-vagrant (= 1.1.1)
