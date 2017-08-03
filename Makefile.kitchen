@@ -5,13 +5,13 @@ style:
 paranoid:
 	kitchen test
 
-up:
+create:
 	kitchen create
 
-down:
+destroy:
 	kitchen destroy
 
-provision:
+converge:
 	kitchen converge
 
 verify:
