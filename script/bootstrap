@@ -5,9 +5,7 @@ function main {
   source "$shome/script/profile"
   source normalize
 
-  rbenv install -s
-  gem install bundler --conservative -v "${BUNDLER_VERSION}"
-  gem update --system
+  block compile rbenv
 
   bundle config build.nokogiri --use-system-libraries --with-xml2-config="$(which xml2-config)" --with-xslt-config="$(which xslt-config)"
   block compile bundler
