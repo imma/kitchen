@@ -1,0 +1,1 @@
+content/kitchen.md
