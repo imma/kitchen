@@ -2,3 +2,5 @@
 /vendor
 /bin/kitchen
 /bin/berks
+Gemfile.lock
+Gemfile.lock
