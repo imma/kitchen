@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function main {
+  ki dest "$@"
+  exec ki conv "$@"
+}
+
+source sub "$0" "$@"
