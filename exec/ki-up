@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+function main {
+  local nm_vagrant="$(ki list "$@" | tail -1 | awk '{print $1}')"
+
+  cd ".kitchen/kitchen-vagrant/${nm_vagrant}" && vagrant up
+}
+
+source sub "$0" "$@"
