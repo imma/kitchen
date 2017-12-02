@@ -3,11 +3,8 @@
 function main {
   source normalize
 
-  local id_image_in="${1:-$(aws ami)}"
-  [[ "$#" -gt 0 ]] && shift
-
-  local nm_image_out="${1:-immanent/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server}"
-  [[ "$#" -gt 0 ]] && shift
+  local id_image_in="$1"; shift
+  local nm_image_out="$1"; shift
 
   fogg chamber adm3-admin-build env FOGG_IMAGE_ID="$id_image_in" FOGG_INSTANCE_TYPE="${FOGG_INSTANCE_TYPE:-c4.large}" FOGG_SPOT_PRICE="${FOGG_SPOT_PRICE:-0.03}" ki reset aws-ubuntu
   id_image_out="$(aws ec2 create-image --reboot --instance-id "$(ki exec aws-ubuntu -c ec2metadata | grep 'instance-id:' | awk '{print $2}')" --name "${nm_image_out}-$(date +%s)" | jq -r '.ImageId')"

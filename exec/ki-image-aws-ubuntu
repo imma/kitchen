@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function main {
+  source normalize
+
+  local id_image_in="${1:-$(aws ami)}"
+  [[ "$#" -gt 0 ]] && shift
+
+  local nm_image_out="${1:-immanent/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server}"
+  [[ "$#" -gt 0 ]] && shift
+
+  ki image aws "$id_image_in" "$nm_image_out"
+}
+
+source sub "$0" "$@"
