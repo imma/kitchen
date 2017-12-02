@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function main {
+  source normalize
+
+  set -x
+
+  local id_image_in="${1:-ubuntu:xenial}"
+  [[ "$#" -gt 0 ]] && shift
+
+  local nm_image_out="${1:-$(aws ecr describe-repositories --repository-name "ubuntu" | jq -r '.repositories[].repositoryUri'):1604}"
+  [[ "$#" -gt 0 ]] && shift
+
+  local pth_ki_docker=".kitchen/docker-ubuntu-1604.yml"
+
+  env FOGG_IMAGE_ID="$id_image_in" ki reset docker-ubuntu
+  local id_container="$(cat "$pth_ki_docker" | python -c 'import sys, yaml, json; y=yaml.load(sys.stdin.read()); print(json.dumps(y))' | jq -r '.container_id')"
+  docker commit "$id_container" "$nm_image_out"
+  ki dest docker-ubuntu
+}
+
+source sub "$0" "$@"
