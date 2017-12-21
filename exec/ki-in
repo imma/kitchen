@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 function main {
-  cd ki
   make
   ki "$@"
 }
