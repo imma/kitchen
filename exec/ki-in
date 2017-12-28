@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-function main {
-  make
-  ki "$@"
-}
-
-source sub "$0" "$@"
