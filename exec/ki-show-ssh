@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function main {
+  local nm_host="$1"; shift
+
+  cat ".kitchen/${nm_host}.yml" \
+    | ruby -rjson -ryaml -e 'puts YAML.load(STDIN.read()).to_json' \
+    | jq -r --arg host "${nm_host}" \
+       '"Host \($host)\n\tHostname \(.hostname)\n\tPort \(.port)\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null\n\tIdentityFile \(.ssh_key)\n\n"'
+}
+
+source sub "$0" "$@"
