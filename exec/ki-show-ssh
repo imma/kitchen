@@ -3,6 +3,10 @@
 function main {
   local nm_host="$1"; shift
 
+  if [[ ! -f ".kitchen/${nm_host}.yml" ]]; then
+    return 0
+  fi
+
   cat ".kitchen/${nm_host}.yml" \
     | ruby -rjson -ryaml -e 'puts YAML.load(STDIN.read()).to_json' \
     | jq -r --arg host "${nm_host}" \

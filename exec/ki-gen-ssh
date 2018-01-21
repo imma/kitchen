@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  runmany 'ki show ssh $1' "$@" | tee "${BOARD_PATH}/.ssh.d/ki"
+  runmany 'ki show ssh $1 | tee "${BOARD_PATH}/.ssh.d/ki-$1"' "$@"
 }
 
 source sub "$0" "$@"
