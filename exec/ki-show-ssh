@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 function main {
+  if [[ -z "${1:-}" ]]; then
+    return 0
+  fi
+
   local nm_host="$1"; shift
 
   if [[ ! -f ".kitchen/${nm_host}.yml" ]]; then
