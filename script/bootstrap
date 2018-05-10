@@ -14,7 +14,6 @@ function main {
   cd "$shome/bin"
   (set +f; ln -nfs \
     ../vendor/bundle/bin/kitchen \
-    ../vendor/bundle/bin/berks \
     "$shome/bin/")
 }
 
